@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dark Empathy Scale</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    
+    h1 {
+      text-align: center;
+    }
+    
+    .question {
+      margin-bottom: 20px;
+    }
+    
+    .response-options {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 5px;
+    }
+    
+    .response-options label {
+      display: block;
+      margin-right: 10px;
+    }
+    
+    .result-container {
+      margin-top: 30px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <h1>Dark Empathy Scale</h1>
+  
+  <div id="questions">
+    <div class="question">
+      <label for="q1">1. I can easily understand and share the feelings of others.</label>
+      <div class="response-options">
+        <label><input type="radio" name="q1" value="1"> Strongly Disagree</label>
+        <label><input type="radio" name="q1" value="2"> Disagree</label>
+        <label><input type="radio" name="q1" value="3"> Neutral</label>
+        <label><input type="radio" name="q1" value="4"> Agree</label>
+        <label><input type="radio" name="q1" value="5"> Strongly Agree</label>
+      </div>
+    </div>
+    
+    <div class="question">
+      <label for="q2">2. I am skilled at manipulating others to get what I want.</label>
+      <div class="response-options">
+        <label><input type="radio" name="q2" value="1"> Strongly Disagree</label>
+        <label><input type="radio" name="q2" value="2"> Disagree</label>
+        <label><input type="radio" name="q2" value="3"> Neutral</label>
+        <label><input type="radio" name="q2" value="4"> Agree</label>
+        <label><input type="radio" name="q2" value="5"> Strongly Agree</label>
+      </div>
+    </div>
+    
+    <!-- Add more questions as needed -->
+  </div>
+  
+  <div class="result-container">
+    <button onclick="calculateResult()">Get Results</button>
+    <div id="result"></div>
+  </div>
+  
+  <script>
+    function calculateResult() {
+      const q1Value = parseInt(document.querySelector('input[name="q1"]:checked')?.value || '0');
+      const q2Value = parseInt(document.querySelector('input[name="q2"]:checked')?.value || '0');
+      
+      const totalScore = q1Value + q2Value;
+      
+      let resultMessage;
+      if (totalScore <= 6) {
+        resultMessage = "You do not appear to exhibit strong dark empathic tendencies.";
+      } else if (totalScore <= 12) {
+        resultMessage = "You may have some dark empathic traits, but they are not pronounced.";
+      } else {
+        resultMessage = "You exhibit strong dark empathic tendencies and should consider seeking further self-reflection or professional support.";
+      }
+      
+      document.getElementById('result').textContent = resultMessage;
+    }
+  </script>
+</body>
+</html>
